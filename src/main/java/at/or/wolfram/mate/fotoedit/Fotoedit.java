@@ -30,7 +30,7 @@ import org.apache.sanselan.formats.tiff.write.TiffOutputSet;
 
 import com.drew.imaging.ImageProcessingException;
 
-public class Main {
+public class Fotoedit {
 
 	private static final String JPEG_EXTENSION = ".jpg";
 	private static final String CAPITAL_JPEG_EXTENSION = ".JPG";
@@ -57,13 +57,13 @@ public class Main {
 		String folderName = args[0];
 		String infoFileName = args[1];
 		String commandName = args[2];
-		Main main = new Main();
+		Fotoedit fotoedit = new Fotoedit();
 
 		if (COMMAND_WRITE_INFO.equals(commandName)) {
-			main.writeFileNamesAndDates(folderName, infoFileName);
+			fotoedit.writeFileNamesAndDates(folderName, infoFileName);
 		}
 		else if (COMMAND_APPLY_INFO.equals(commandName)) {
-			main.applyDatesToFiles(folderName, infoFileName);
+			fotoedit.applyDatesToFiles(folderName, infoFileName);
 		}
 		else {
 			System.out.println("Please choose a valid command. Choices: ");
