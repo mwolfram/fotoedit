@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.IOCase;
 import org.apache.commons.io.filefilter.SuffixFileFilter;
 import org.apache.commons.io.filefilter.TrueFileFilter;
 import org.apache.sanselan.ImageReadException;
@@ -33,7 +34,6 @@ import com.drew.imaging.ImageProcessingException;
 public class Fotoedit {
 
 	private static final String JPEG_EXTENSION = ".jpg";
-	private static final String CAPITAL_JPEG_EXTENSION = ".JPG";
 	private static final int DATE_LENGTH = 22;
 	private static final String NO_DATE = "1970:01:01 00:00:00";
 	private static final String DELIMITER = ";";
@@ -118,10 +118,9 @@ public class Fotoedit {
 	private Collection<File> listJPEG(String directoryStr) {
 		List<String> extensions = new ArrayList<String>();
 		extensions.add(JPEG_EXTENSION);
-		extensions.add(CAPITAL_JPEG_EXTENSION);
 
 		File directory = new File(directoryStr);
-		Collection<File> fileCollection = FileUtils.listFiles(directory, new SuffixFileFilter(extensions), TrueFileFilter.INSTANCE);
+		Collection<File> fileCollection = FileUtils.listFiles(directory, new SuffixFileFilter(extensions, IOCase.INSENSITIVE), TrueFileFilter.INSTANCE);
 
 		return fileCollection;
 	}
